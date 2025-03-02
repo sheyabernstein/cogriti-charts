@@ -7,10 +7,12 @@ version: 0.6.1
 appVersion: "0.24.1"
 dependencies:
   - name: postgresql
-    version: 16.4.14
     repository: https://charts.bitnami.com/bitnami
+    version: 16.4.14
+    condition: postgresql.enabled
   - name: redis
     repository: https://charts.bitnami.com/bitnami
     version: 20.10.0
+    condition: redis.enabled
 sources:
   - https://dawarich.app

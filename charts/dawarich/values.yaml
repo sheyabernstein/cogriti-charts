@@ -107,7 +107,11 @@ persistence:
     storageClass: ""
     size: 10Gi
 
+# https://github.com/bitnami/charts/tree/master/bitnami/postgresql/#installing-the-chart
 postgresql:
+  enabled: true
+  externalHost: ~
+  externalPort: ~
   auth:
     # Either set the postgresql credentials in the helm chart, or provide your own secret.
     database: dawarich
@@ -131,7 +135,11 @@ postgresql:
     # As per upstream
     sizeLimit: 1Gi
 
+# https://github.com/bitnami/charts/tree/master/bitnami/redis/#installing-the-chart
 redis:
+  enabled: true
+  externalHost: ~
+  externalPort: ~
   auth:
     enabled: true
     password: changeme

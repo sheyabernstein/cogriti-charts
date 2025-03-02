@@ -50,3 +50,19 @@ Some of the most important values are documented below. Checkout the [values.yam
 | persistence.export | object | See [values.yaml](./values.yaml) | Configure watched volume settings for the chart under this key. |
 | postgresql | object | See [values.yaml](./values.yaml) | Configure postgresql database subchart under this key. Dawarich will automatically be configured to use the credentials supplied to postgresql. [[ref]](https://github.com/bitnami/charts/tree/main/bitnami/postgresql) |
 | redis | object | See [values.yaml](./values.yaml) | Configure redis subchart under this key. Dawarich will automatically be configured to use the credentials supplied to postgresql. [[ref]](https://github.com/bitnami/charts/tree/main/bitnami/redis) |
+
+To use external Postgres or Redis instances, set `enabled: false` and populate the external host and port. E.g.,
+
+```yaml
+postgresql:
+  enabled: false
+  externalHost: my.postgres.cluster
+  externalPort: 5432
+  auth:
+    username: dawarich
+    database: dawarich
+    password: super-secret
+```
+
+> [!IMPORTANT]
+> The Dawarich Postgres user is not elevated to superuser when using an external Postgres instance. Dawarich requires elevated privileges to enable database extensions like Postgis.
